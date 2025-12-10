@@ -27,26 +27,12 @@ server.get('/', (req, res) => {
 //     console.log(`Serveur démarrer sur http://localhost: ${port}`);
 // });
 
-// Gestion des utilisateurs
-// Importation du module express
+const express = require('express');
+const app = express();
+const usersRoutes = require('./Routes/users');
 
-const express = require('exp');
+app.use('/api/users', usersRoutes);
 
-// creation de la varaible server
-
-const server = express();
-
-// Déclaration de la variable port
-
-const port = 8080;
-
-// Middleware pour parser le JSON
-
-server.use(express.json());
-
-// Création d'une route de base
-
-let user = [
-    {id: 1, nom: 'OKOMBI', prenom: 'Fortune Serge Béni', email: 'okombi@example.com'},
-    {id: 2, nom: 'Martin', prenom: 'marie', email: 'marie@example.com'}
-];
+app.listen(3000, () => {
+    console.log('Serveur demarrer sur http://localhost:3000');
+});
